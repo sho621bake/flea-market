@@ -63,8 +63,6 @@ export class ItemsService {
     const item = await this.itemRepository.findOneBy({ id });
     if (item.userId !== user.id) {
       throw new BadRequestException('他人の商品を削除することはできません。');
-    } else {
-      console.log('Delete Successfully');
     }
     await this.itemRepository.delete({ id });
   }
